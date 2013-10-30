@@ -232,6 +232,38 @@ class Base_VCF extends Kohana_Object {
         return FALSE;
 	}
 
+       /**
+	 * This function sets the mobile number of the object the vCard represents. 
+	 *
+	 * @access public
+	 * @param integer $vcard_id					the vCard's ID
+	 * @param string $mobile	    				the mobile number
+	 *
+	 * @see http://tools.ietf.org/html/draft-ietf-vcarddav-vcardrev-12#section-6.2.5
+	 */
+	public function add_mobile($vcard_id, $mobile) {
+		if (!empty($mobile)) {
+		    $this->vcards[$vcard_id]['TEL;TYPE=cell'][0]['DATA'] = $mobile;
+		    return TRUE;
+	    }
+	    return FALSE;
+	}
+       /**
+	 * This function sets the office number of the object the vCard represents. 
+	 *
+	 * @access public
+	 * @param integer $vcard_id					the vCard's ID
+	 * @param string $office	    				the office number
+	 *
+	 * @see http://tools.ietf.org/html/draft-ietf-vcarddav-vcardrev-12#section-6.2.5
+	 */
+	public function add_office_tel($vcard_id, $office) {
+		if (!empty($office)) {
+		    $this->vcards[$vcard_id]['TEL;TYPE=work'][0]['DATA'] = $office;
+		    return TRUE;
+	    }
+	    return FALSE;
+	}
 	/**
 	 * This function sets the email address for communication with the object the vCard represents.
 	 *
